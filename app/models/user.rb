@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
   end
   attr_accessible :name, :email_address, :password, :password_confirmation, :current_password
 
+  # --- Relations --- #
+
+  has_many :workdays, :class_name => "Workday", :foreign_key => "owner_id", :dependent => :destroy
+
+
   # This gives admin rights and an :active state to the first sign-up.
   # Just remove it if you don't want that
   before_create do |user|

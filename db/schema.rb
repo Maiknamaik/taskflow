@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314124003) do
+ActiveRecord::Schema.define(:version => 20130319100823) do
+
+  create_table "tasks", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "description"
+    t.string   "utility"
+    t.string   "resources"
+    t.integer  "workday_id"
+  end
+
+  add_index "tasks", ["workday_id"], :name => "index_tasks_on_workday_id"
 
   create_table "users", :force => true do |t|
     t.string   "crypted_password",          :limit => 40
@@ -28,5 +39,15 @@ ActiveRecord::Schema.define(:version => 20130314124003) do
   end
 
   add_index "users", ["state"], :name => "index_users_on_state"
+
+  create_table "workdays", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "date_time"
+    t.integer  "n_day"
+    t.integer  "user_id"
+  end
+
+  add_index "workdays", ["user_id"], :name => "index_workdays_on_user_id"
 
 end
