@@ -5,6 +5,23 @@
 Taskflow::Application.routes.draw do
 
 
+  # Resource routes for controller tasks
+  resources :tasks
+
+  # Owner routes for controller tasks
+  resources :workdays, :as => :workday, :only => [] do
+    resources :tasks, :only => [] do
+      collection do
+        post 'create', :action => 'create_for_workday'
+      end
+    end
+  end
+
+
+  # Resource routes for controller workdays
+  resources :workdays
+
+
   # Resource routes for controller users
   resources :users, :only => [:edit, :show, :create, :update, :destroy] do
     collection do
