@@ -6,8 +6,127 @@
 <def tag="main-nav">
   <navigation class="main-nav" merge-attrs param="default">
     <nav-item href="#{base_url}/">Home</nav-item>
+    <nav-item with="&Task"><ht key="task.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
+    <nav-item with="&Workday"><ht key="workday.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
 </def>
+
+
+
+
+<!-- ====== Task Pages ====== -->
+
+<def tag="index-page" for="Task">
+  <page merge title="#{ht 'task.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="index-page task" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="task.index.heading">
+          <model-name-human model="&model"/>
+        </ht>
+      </h2>
+
+      <p param="count" if>
+        <ht key="task.collection.count" count="&collection_count">
+          <count summary/>
+        </ht>
+      </p>
+    </content-header:>
+
+    <content-body: param>
+      <a action="new" to="&model" param="new-link">
+        <ht key="task.actions.new">New Task</ht>
+      </a>
+
+      <page-nav param="top-page-nav"/>
+
+      <collection param/>
+
+      <page-nav param="bottom-page-nav"/>
+
+
+    </content-body:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Task">
+  <page merge title="#{ht 'task.new.title', :default=>[' New Task'] }">
+    <body: class="new-page task" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="task.new.heading">
+          New Task
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: param>
+      <form param>
+        <submit: label="#{ht 'task.actions.create', :default=>['Create Task']}"/>
+      </form>
+    </content-body:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Task">
+  <page merge title="#{ht 'task.show.title', :default=>['Task'], :name => name(:no_wrapper => true) }" without-aside >
+
+    <body: class="show-page task" param/>
+
+    <content-header: param>
+      <a:workday param="parent-link">&laquo; <ht key="task.actions.back_to_parent" parent="Workday" name="&this">Back to <name/></ht></a:workday>
+      <h2 param="heading">
+        <ht key="task.show.heading" name="#{name(:no_wrapper => true)}">
+          Task <name/>
+        </ht>
+      </h2>
+
+      <record-flags fields="" param/>
+
+      <a action="edit" if="&can_edit?" param="edit-link">
+        <ht key="task.actions.edit" name="#{name(:no_wrapper => true)}">
+          Edit Task
+        </ht>
+      </a>
+    </content-header:>
+
+    <content-body: param>
+      <view:description param="description" />
+      <field-list fields="utility, resources" param/>
+    </content-body:>
+
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Task">
+  <page merge title="#{ht 'task.edit.title', :default=>['Edit Task'], :name => name(:no_wrapper => true) }">
+
+    <body: class="edit-page task" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="task.edit.heading" name="#{name(:no_wrapper => true)}">
+          Edit Task
+        </ht>
+      </h2>
+      <delete-button label="#{ht 'task.actions.delete', :default=>['Remove This Task']}" param/>
+    </content-header:>
+
+    <content-body: param>
+      <form param/>
+    </content-body:>
+
+  </page>
+</def>
+
+
+
+
 
 
 
@@ -167,5 +286,138 @@
 
   </page>
 </def>
+
+
+
+<!-- ====== Workday Pages ====== -->
+
+<def tag="index-page" for="Workday">
+  <page merge title="#{ht 'workday.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="index-page workday" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="workday.index.heading">
+          <model-name-human model="&model"/>
+        </ht>
+      </h2>
+
+      <p param="count" if>
+        <ht key="workday.collection.count" count="&collection_count">
+          <count summary/>
+        </ht>
+      </p>
+    </content-header:>
+
+    <content-body: param>
+      <a action="new" to="&model" param="new-link">
+        <ht key="workday.actions.new">New Workday</ht>
+      </a>
+
+      <page-nav param="top-page-nav"/>
+
+      <collection param/>
+
+      <page-nav param="bottom-page-nav"/>
+
+
+    </content-body:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Workday">
+  <page merge title="#{ht 'workday.new.title', :default=>[' New Workday'] }">
+    <body: class="new-page workday" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="workday.new.heading">
+          New Workday
+        </ht>
+      </h2>
+    </content-header:>
+
+    <content-body: param>
+      <form param>
+        <submit: label="#{ht 'workday.actions.create', :default=>['Create Workday']}"/>
+      </form>
+    </content-body:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Workday">
+  <page merge title="#{ht 'workday.show.title', :default=>['Workday'], :name => name(:no_wrapper => true) }" without-aside >
+
+    <body: class="show-page workday" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="workday.show.heading" name="#{name(:no_wrapper => true)}">
+          Workday <name/>
+        </ht>
+      </h2>
+
+      <record-flags fields="" param/>
+
+      <a action="edit" if="&can_edit?" param="edit-link">
+        <ht key="workday.actions.edit" name="#{name(:no_wrapper => true)}">
+          Edit Workday
+        </ht>
+      </a>
+    </content-header:>
+
+    <content-body: param>
+      <field-list fields="date_time, n_day, user" param/>
+      <section param="collection-section">
+        <h3 param="collection-heading">
+          <ht key="task.collection.heading" count="&this.tasks.count" >
+            <human-collection-name collection="tasks" your/>
+          </ht>
+        </h3>
+
+        <collection:tasks param/>
+
+        <section param="add-to-collection" if="&can_create?(@workday.tasks)">
+          <h3 param="add-form-heading">
+            <ht key="task.collection.add_form_heading" count="1">
+              Add a Task
+            </ht>
+          </h3>
+          <form with="&@task || new_for_current_user(@workday.tasks)" owner="workday" without-cancel param>
+            <field-list: skip="workday"/>
+            <submit: label="#{ht 'task.actions.add', :default=>['Add'] }"/>
+          </form>
+        </section>
+      </section>
+    </content-body:>
+
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Workday">
+  <page merge title="#{ht 'workday.edit.title', :default=>['Edit Workday'], :name => name(:no_wrapper => true) }">
+
+    <body: class="edit-page workday" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="workday.edit.heading" name="#{name(:no_wrapper => true)}">
+          Edit Workday
+        </ht>
+      </h2>
+      <delete-button label="#{ht 'workday.actions.delete', :default=>['Remove This Workday']}" param/>
+    </content-header:>
+
+    <content-body: param>
+      <form param/>
+    </content-body:>
+
+  </page>
+</def>
+
+
 
 
