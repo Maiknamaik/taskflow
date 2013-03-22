@@ -17,19 +17,19 @@ class Task < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator? || workday.creatable_by?(acting_user)
+    acting_user.administrator?
   end
 
   def update_permitted?
-    acting_user.administrator? || workday.updatable_by?(acting_user)
+    acting_user.administrator?
   end
 
   def destroy_permitted?
-    acting_user.administrator? || workday.destroyable_by?(acting_user)
+    acting_user.administrator?
   end
 
   def view_permitted?(field)
-    acting_user.administrator? || workday.destroyable_by?(acting_user)    
+    acting_user.administrator?
   end
 
 end

@@ -51,3 +51,4 @@ gem "acts_as_list"
 gem "bluecloth"
 gem 'RedCloth', :require => 'redcloth'
 gem 'bootswatch-rails'
+gem "watu_table_builder", :require => "table_builder"

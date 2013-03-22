@@ -13,26 +13,26 @@ class Workday < ActiveRecord::Base
 
   has_many :tasks, :dependent => :destroy
 
-  belongs_to :owner, :class_name => "User" :creator => true
+  belongs_to :owner_id, :class_name => "User", :creator => true
 
   children :tasks
 
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator? || acting_user.signed_up?
+    acting_user.administrator?
   end
 
   def update_permitted?
-    acting_user.administrator? || (owner_is?(acting_user) && !owner_changed?)
+    acting_user.administrator?
   end
 
   def destroy_permitted?
-    acting_user.administrator? || owner_is?(acting_user)
+    acting_user.administrator?
   end
 
   def view_permitted?(field)
-    owner_is? acting_user
+    acting_user.administrator?
   end
 
 end
