@@ -49,7 +49,7 @@
 <def tag="form" for="Workday">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="date_time, n_day, user" param/>
+    <field-list fields="date_time, n_day, owner_id" param/>
     <div param="actions">
       <submit label="#{ht 'workday.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
