@@ -23,6 +23,7 @@
       <h4 param="heading"><a><name/></a></h4>
     </header:>
     <body: param>
+      <a:owner_id param="creator-link"/>
       <ht key="task.collection.count" count="&this.tasks.size">
          <count:tasks param/>
       </ht>

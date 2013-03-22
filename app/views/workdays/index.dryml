@@ -1,0 +1,19 @@
+<index-page>
+
+<after-content-body:>
+
+<% @tasks=%>
+
+<%= calendar_for(@tasks) do |t| %>
+  <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
+  <%= t.day do |day, tasks| %>
+    <%= day.day %>
+    <% tasks.each do |task| %>
+      <%= h(task.name) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+</after-content-body:>
+
+</index-page>

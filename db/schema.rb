@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319100823) do
+ActiveRecord::Schema.define(:version => 20130321121556) do
 
   create_table "tasks", :force => true do |t|
     t.datetime "created_at"
@@ -46,8 +46,9 @@ ActiveRecord::Schema.define(:version => 20130319100823) do
     t.date     "date_time"
     t.integer  "n_day"
     t.integer  "user_id"
+    t.integer  "owner_id_id"
   end
 
-  add_index "workdays", ["user_id"], :name => "index_workdays_on_user_id"
+  add_index "workdays", ["owner_id_id"], :name => "index_workdays_on_owner_id_id"
 
 end

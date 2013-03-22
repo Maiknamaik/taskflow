@@ -78,7 +78,6 @@
     <body: class="show-page task" param/>
 
     <content-header: param>
-      <a:workday param="parent-link">&laquo; <ht key="task.actions.back_to_parent" parent="Workday" name="&this">Back to <name/></ht></a:workday>
       <h2 param="heading">
         <ht key="task.show.heading" name="#{name(:no_wrapper => true)}">
           Task <name/>
@@ -96,7 +95,7 @@
 
     <content-body: param>
       <view:description param="description" />
-      <field-list fields="utility, resources" param/>
+      <field-list fields="utility, resources, workday" param/>
     </content-body:>
 
   </page>
@@ -361,6 +360,8 @@
 
       <record-flags fields="" param/>
 
+      <a:owner_id param="creator-link"/>
+
       <a action="edit" if="&can_edit?" param="edit-link">
         <ht key="workday.actions.edit" name="#{name(:no_wrapper => true)}">
           Edit Workday
@@ -369,7 +370,7 @@
     </content-header:>
 
     <content-body: param>
-      <field-list fields="date_time, n_day, user" param/>
+      <field-list fields="date_time, n_day" param/>
       <section param="collection-section">
         <h3 param="collection-heading">
           <ht key="task.collection.heading" count="&this.tasks.count" >
