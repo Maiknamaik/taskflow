@@ -2,17 +2,20 @@
 
 <after-content-body:>
 
+
+<div id="calendar">
+  <h2 id="month">
+    <%=h @date.strftime("%B,%Y") %>
+  </h2>
 <% @tasks=%>
 
-<%= calendar_for(@tasks) do |t| %>
-  <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
-  <%= t.day do |day, tasks| %>
-    <%= day.day %>
-    <% tasks.each do |task| %>
-      <%= h(task.name) %>
-    <% end %>
+<%= calendar_for(@tasks, :first_day_of_week => 1) do |t| %>
+  <%= t.head('LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO') %>
+   <%= t.day do |day, tasks| %>
+    <a href="/workdays/new?day=#{day.to_s}"><%= day.day %></a>
   <% end %>
 <% end %>
+</div>
 
 </after-content-body:>
 
