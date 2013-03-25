@@ -78,7 +78,6 @@
     <body: class="show-page task" param/>
 
     <content-header: param>
-      <a:workday param="parent-link">&laquo; <ht key="task.actions.back_to_parent" parent="Workday" name="&this">Back to <name/></ht></a:workday>
       <h2 param="heading">
         <ht key="task.show.heading" name="#{name(:no_wrapper => true)}">
           Task <name/>
@@ -96,7 +95,7 @@
 
     <content-body: param>
       <view:description param="description" />
-      <field-list fields="utility, resources" param/>
+      <field-list fields="utility, resources, workday" param/>
     </content-body:>
 
   </page>
