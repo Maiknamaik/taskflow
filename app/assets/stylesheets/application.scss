@@ -16,8 +16,7 @@
 #calendar td,
 #calendar th {
   font-family: "Lucida Grande",arial,helvetica,sans-serif;
-  font-size: 10px;
-  padding: 6px;
+  font-size: 12px;
   border: 1px solid #999;
 }
 
@@ -25,7 +24,6 @@
   background: #DDD;
   color: #666;
   text-align: center;
-  width: 14.2857142857143%;
 }
 
 #calendar td {
@@ -36,8 +34,14 @@
   font-size: 16px;
 }
 
+#calendar .weekend {
+  color: #CC0000;
+  width: 10%;
+}
+
 #calendar .notmonth {
   color: #CCC;
+  width: 16%;
 }
 
 #calendar #month {
@@ -45,12 +49,37 @@
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
+  width: 16%;
 }
 
-#calendar #month a, #calendar #month a:hover {
+#calendar #month ~ a, #calendar #month a:hover {
   text-decoration: none;
   padding: 0 10px;
   color: #999;
+}
+
+#calendar a {
+  padding: 6px;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#calendar td:hover{
+  text-decoration: none;
+  padding: 0px;
+  color: #999;
+  background: #FF0;
+}
+
+#calendar td.weekend:hover {
+  color: #CC0000;
+  background: #FFF;
+}
+
+#calendar td.notmonth:hover {
+  color: #CCC;
+  background: #FFF;
 }
 
 #calendar .today {
