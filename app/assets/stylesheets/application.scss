@@ -32,6 +32,7 @@
   height: 80px;
   vertical-align: top;
   font-size: 16px;
+  width: 16%
 }
 
 #calendar .weekend {
@@ -39,17 +40,19 @@
   width: 10%;
 }
 
-#calendar .notmonth {
-  color: #CCC;
-  width: 16%;
-}
-
-#calendar #month {
+#month {
   margin: 0;
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
-  width: 16%;
+  width: 100%;
+}
+
+#calendar {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
 }
 
 #calendar #month ~ a, #calendar #month a:hover {

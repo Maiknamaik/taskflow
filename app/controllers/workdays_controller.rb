@@ -5,12 +5,14 @@ class WorkdaysController < ApplicationController
   auto_actions :all
 
   def index
-    @date = Date.today
+    @date = params[:month] ? Date.parse(params[:month]+'-01') : Date.today
     hobo_index
   end
 
   def new
     @workday=Workday.new(:date_time => params[:day])
-
   end
+
 end
+
+
