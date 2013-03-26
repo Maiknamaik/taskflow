@@ -1,0 +1,9 @@
+<new-page>
+    <content-header: replace/> 
+
+    <content-body:>
+      <form>
+        <submit: label="#{ht 'workday.actions.create', :default=>['Create Workday']}"/>
+      </form>
+    </content-body:>
+  </new-page>
