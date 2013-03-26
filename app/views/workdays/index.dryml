@@ -1,15 +1,20 @@
 <index-page>
 
-<after-content-body:>
+<content-header: replace/>
+<content-body:>
 
+<div id="month">
+  <h2>
+        <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
+        <%= @date.strftime("%B - %Y") %>
+        <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
+  </h2>
+</div>
 
 <div id="calendar">
-  <h2 id="month">
-    <%=h @date.strftime("%B,%Y") %>
-  </h2>
 <% @tasks=%>
 
-<%= calendar_for(@tasks, :first_day_of_week => 1) do |t| %>
+<%= calendar_for(@tasks, :first_day_of_week => 1, :year => @date.year, :month => @date.month) do |t| %>
   <%= t.head('LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO') %>
    <%= t.day do |day, tasks| %>
     <a href="/workdays/new?day=#{day.to_s}"><%= day.day %></a>
@@ -17,6 +22,6 @@
 <% end %>
 </div>
 
-</after-content-body:>
+</content-body:>
 
 </index-page>
