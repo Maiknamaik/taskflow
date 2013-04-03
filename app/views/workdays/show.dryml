@@ -1,0 +1,26 @@
+<index-page>
+
+  <content-header: replace/>
+
+  <content-body:>
+    <field-list fields="date_time"/>
+      <h3>
+        <ht key="task.collection.heading" count="&this.tasks.count" >
+          <human-collection-name collection="tasks" your/>
+        </ht>
+      </h3>
+
+      <collection:tasks/>
+        <section if="&can_create?(@workday.tasks)">
+          <h3>
+            <ht key="task.collection.add_form_heading" count="1">
+              Añade nueva tarea
+            </ht>
+          </h3>
+          <form with="&@task || new_for_current_user(@workday.tasks)" owner="workday" without-cancel>
+            <field-list: skip="workday"/>
+            <submit: label="#{ht 'task.actions.add', :default=>['Add'] }"/>
+          </form>
+        </section>
+  </content-body:>
+</index-page>

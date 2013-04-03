@@ -3,7 +3,7 @@
 
     <content-body:>
       <form>
-        <submit: label="#{ht 'workday.actions.create', :default=>['Create Workday']}"/>
+        <submit: label="#{ht 'workday.actions.create', :default=>['Generar día']}"/>
       </form>
     </content-body:>
   </new-page>
