@@ -11,6 +11,8 @@ class WorkdaysController < ApplicationController
 
   def new
     @workday=Workday.new(:date_time => params[:day])
+    @workday.save
+    redirect_to @workday
   end
 
 end

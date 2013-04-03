@@ -18,7 +18,7 @@
   <%= t.head('LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO') %>
   <%= t.day do |day, tasks| %>
     <% if workday = Workday.find_by_date_time(day.to_s) %>
-      <div id="exist"><a href="/workdays/#{workday.id}"><%= day.day %></a></div>
+      <a href="/workdays/#{workday.id}"><%= day.day %></a>
     <% else %>
       <a href="/workdays/new?day=#{day.to_s}"><%= day.day %></a>
     <% end %>
