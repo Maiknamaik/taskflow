@@ -1,22 +1,19 @@
-class Workday < ActiveRecord::Base
+class Project < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
   fields do
-    date_time :date
-    n_day :integer
     timestamps
+    pro_date_ini :date
+    pro_date_end :date
   end
-  attr_accessible :n_day, :date_time, :workday
+  attr_accessible :pro_date_ini, :pro_date_end, :workday, :user, :task
 
   # --- Relations --- #
 
-  has_many :tasks, :dependent => :destroy
-
-  belongs_to :user
-
-  children :tasks
-
+  has_many :users, :through => :project_users
+  has_many :project_users
+  
   # --- Permissions --- #
 
   def create_permitted?
@@ -32,7 +29,7 @@ class Workday < ActiveRecord::Base
   end
 
   def view_permitted?(field)
-    acting_user.administrator?
+    true
   end
 
 end

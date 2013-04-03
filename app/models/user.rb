@@ -12,9 +12,10 @@ class User < ActiveRecord::Base
 
   # --- Relations --- #
 
-  has_many :workdays, :class_name => "Workday", :foreign_key => "owner_id", :dependent => :destroy
-
-
+  has_many :workdays
+  has_many :project, :through => :project_users
+  has_many :project_users
+  
   # This gives admin rights and an :active state to the first sign-up.
   # Just remove it if you don't want that
   before_create do |user|

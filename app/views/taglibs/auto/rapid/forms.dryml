@@ -1,6 +1,30 @@
 <!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
 
 
+<def tag="form" for="ProjectUser">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="project, user" param/>
+    <div param="actions">
+      <submit label="#{ht 'project_user.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Project">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="pro_date_ini, pro_date_end" param/>
+    <div param="actions">
+      <submit label="#{ht 'project.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
 <def tag="form" for="Task">
   <form merge param="default">
     <error-messages param/>
@@ -49,7 +73,7 @@
 <def tag="form" for="Workday">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="date_time, n_day, owner_id" param/>
+    <field-list fields="date_time, n_day, user" param/>
     <div param="actions">
       <submit label="#{ht 'workday.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
