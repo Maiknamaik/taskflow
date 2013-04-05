@@ -8,9 +8,12 @@
  *= require_tree ./application
 */
 
+// CALENDARIO ===========================================================================
+
 #calendar table {
   border-collapse: collapse;
   width: 100%;
+  box-shadow: 2px 2px 5px #999;
 }
 
 #calendar td,
@@ -102,4 +105,48 @@
   font-size: 11px;
   text-align: center;
 }
+
+// FORMULARIO DE TAREAS =================================================================
+
+.diario table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.diario td,
+.diario th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 12px;
+  border: 1px solid #999;
+}
+
+.diario th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+}
+
+.diario td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 12px;
+  width: 33%;
+  padding: 3px;
+}
+
+.diario th{
+  color: #000;
+  height: 10px;
+}
+
+#nuevaform {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 12px;
+}
+
+// PROPIEDADES GLOBALES PERSONALIZADAS ##################################################
+
 

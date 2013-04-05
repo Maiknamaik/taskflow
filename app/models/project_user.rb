@@ -5,7 +5,7 @@ class ProjectUser < ActiveRecord::Base
   fields do
     timestamps
   end
-  attr_accessible 
+
   # --- Relations --- #
 
   belongs_to :user

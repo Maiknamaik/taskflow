@@ -1,26 +1,40 @@
 <index-page>
 
-  <content-header: replace/>
+<!-- Elimina el botón de la cabecera del formulario para añadir Nuevos Workdays de forma manual -->
+    <content-header: replace/>
 
-  <content-body:>
-    <field-list fields="date_time"/>
-      <h3>
-        <ht key="task.collection.heading" count="&this.tasks.count" >
-          <human-collection-name collection="tasks" your/>
-        </ht>
-      </h3>
+    <content-body:>
 
-      <collection:tasks/>
-        <section if="&can_create?(@workday.tasks)">
-          <h3>
-            <ht key="task.collection.add_form_heading" count="1">
-              Añade nueva tarea
-            </ht>
-          </h3>
-          <form with="&@task || new_for_current_user(@workday.tasks)" owner="workday" without-cancel>
-            <field-list: skip="workday"/>
-            <submit: label="#{ht 'task.actions.add', :default=>['Add'] }"/>
-          </form>
-        </section>
-  </content-body:>
+<!-- Muestra la fecha seleccionada en el calendario -->
+      <field-list fields="date_time"/>
+
+<!-- Tabla que se autocarga con las Tasks -->
+      <div class="diario">
+        <table with="&@Tasks_array" fields="description, utility, resources">
+        <description-heading:>DESCRIPCIÓN</description-heading:>
+        <utility-heading:>UTILIDAD</utility-heading:>
+        <resources-heading:>RECURSOS</resources-heading:>
+        </table>
+      </div>
+
+<!-- v SECCIÓN GENERADA PARA USUARIO CON PERMISOS DE GENERACIÓN DE TASKS V -->
+      <section if="&can_create?(@workday.tasks)">
+        <h3>
+          <ht key="task.collection.add_form_heading" count="1">
+            Nueva tarea
+          </ht>
+        </h3>
+
+<!-- Formulario de generación de Tasks -->
+          <div id="nuevaform">
+            Describe brevemente la tarea que has realizado:
+            <form with="&@task || new_for_current_user(@workday.tasks)" owner="workday" without-cancel>
+              <field-list: skip="workday"/>
+              <submit: label="#{ht 'task.actions.add', :default=>['Añadir'] }"/>
+            </form>
+          </div>          
+      </section>
+
+    </content-body:>
+
 </index-page>

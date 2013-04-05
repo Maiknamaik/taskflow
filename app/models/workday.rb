@@ -7,7 +7,6 @@ class Workday < ActiveRecord::Base
     n_day :integer
     timestamps
   end
-  attr_accessible :n_day, :date_time, :workday
 
   # --- Relations --- #
 

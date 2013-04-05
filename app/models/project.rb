@@ -7,7 +7,6 @@ class Project < ActiveRecord::Base
     pro_date_ini :date
     pro_date_end :date
   end
-  attr_accessible :pro_date_ini, :pro_date_end, :workday, :user, :task
 
   # --- Relations --- #
 

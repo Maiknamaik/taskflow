@@ -8,7 +8,6 @@ class Task < ActiveRecord::Base
     utility :string
     resources :string
   end
-  attr_accessible :description, :utility, :workday, :workday_id, :resources, :users
 
   # --- Relations --- #
 
