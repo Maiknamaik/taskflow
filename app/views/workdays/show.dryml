@@ -10,7 +10,7 @@
 
 <!-- Tabla que se autocarga con las Tasks -->
       <div class="diario">
-        <table with="&@Tasks_array" fields="description, utility, resources">
+        <table with="&@tasks" fields="description, utility, resources">
         <description-heading:>DESCRIPCIÓN</description-heading:>
         <utility-heading:>UTILIDAD</utility-heading:>
         <resources-heading:>RECURSOS</resources-heading:>
@@ -26,13 +26,13 @@
         </h3>
 
 <!-- Formulario de generación de Tasks -->
-          <div id="nuevaform">
-            Describe brevemente la tarea que has realizado:
-            <form with="&@task || new_for_current_user(@workday.tasks)" owner="workday" without-cancel>
-              <field-list: skip="workday"/>
-              <submit: label="#{ht 'task.actions.add', :default=>['Añadir'] }"/>
-            </form>
-          </div>          
+        <div id="nuevaform">
+          Describe brevemente la tarea que has realizado:
+          <form with="&@task || new_for_current_user(@workday.tasks)" owner="workday" without-cancel>
+            <field-list: skip="workday"/>
+            <submit: label="#{ht 'task.actions.add', :default=>['Añadir'] }"/>
+          </form>
+        </div>          
       </section>
 
     </content-body:>
