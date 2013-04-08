@@ -18,8 +18,16 @@ Taskflow::Application.routes.draw do
   end
 
 
+  # Resource routes for controller projects
+  resources :projects
+
+
   # Resource routes for controller workdays
   resources :workdays
+
+
+  # Resource routes for controller project_users
+  resources :project_users
 
 
   # Resource routes for controller users
