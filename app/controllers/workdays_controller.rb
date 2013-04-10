@@ -15,6 +15,13 @@ class WorkdaysController < ApplicationController
     redirect_to @workday
   end
 
+  def show
+#   Se puede buscar tanto por fecha como por id del Workday
+#   @tasks = Task.joins(:workday).where(:workdays => {:date_time => params[day.to_s]})
+    @tasks = Task.joins(:workday).where(:workdays => {:id => params[:id]})
+    hobo_show
+  end
+
 end
 
 
