@@ -31,7 +31,7 @@ Taskflow::Application.routes.draw do
 
 
   # Resource routes for controller users
-  resources :users, :only => [:edit, :show, :create, :update, :destroy] do
+  resources :users do
     collection do
       post 'signup', :action => 'do_signup'
       get 'signup'

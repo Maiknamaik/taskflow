@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326101058) do
+ActiveRecord::Schema.define(:version => 20130411072808) do
+
+  create_table "project_users", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "project_id"
+  end
+
+  add_index "project_users", ["project_id"], :name => "index_project_users_on_project_id"
+  add_index "project_users", ["user_id"], :name => "index_project_users_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.datetime "created_at"
@@ -23,9 +33,9 @@ ActiveRecord::Schema.define(:version => 20130326101058) do
   create_table "tasks", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
-    t.string   "utility"
-    t.string   "resources"
+    t.text     "description"
+    t.text     "utility"
+    t.text     "resources"
     t.integer  "workday_id"
   end
 
@@ -43,21 +53,17 @@ ActiveRecord::Schema.define(:version => 20130326101058) do
     t.datetime "updated_at"
     t.string   "state",                                   :default => "active"
     t.datetime "key_timestamp"
-    t.integer  "project_id"
   end
 
-  add_index "users", ["project_id"], :name => "index_users_on_project_id"
   add_index "users", ["state"], :name => "index_users_on_state"
 
   create_table "workdays", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date_time"
-    t.integer  "n_day"
-    t.integer  "user_id"
-    t.integer  "owner_id_id"
+    t.integer  "owner_id"
   end
 
-  add_index "workdays", ["owner_id_id"], :name => "index_workdays_on_owner_id_id"
+  add_index "workdays", ["owner_id"], :name => "index_workdays_on_owner_id"
 
 end

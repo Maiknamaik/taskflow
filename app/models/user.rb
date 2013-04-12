@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   # --- Relations --- #
 
-  has_many :workdays
+  has_many :workdays, :class_name => "Workday", :foreign_key => "owner_id"
   has_many :project, :through => :project_users
   has_many :project_users
   
@@ -48,7 +48,8 @@ class User < ActiveRecord::Base
 
   def create_permitted?
     # Only the initial admin user can be created
-    self.class.count == 0
+    # self.class.count == 0
+    acting_user.administrator?
   end
 
   def update_permitted?
@@ -60,10 +61,10 @@ class User < ActiveRecord::Base
   end
 
   def destroy_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || acting_user == self
   end
 
   def view_permitted?(field)
-    true
+    acting_user.administrator? || acting_user == self
   end
 end

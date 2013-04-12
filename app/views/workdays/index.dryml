@@ -1,31 +1,31 @@
 <index-page>
 
 <content-header: replace/>
-<content-body:>
+  <content-body:>
 
-<div id="month">
-  <h2>
+    <div id="month">
+      <h2>
         <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
         <%= @date.strftime("%B - %Y") %>
         <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
-  </h2>
-</div>
+      </h2>
+    </div>
 
-<div id="calendar">
-<% @tasks=%>
+    <div id="calendar">
+      <% @tasks=%>
 
-<%= calendar_for(@tasks, :first_day_of_week => 1, :year => @date.year, :month => @date.month) do |t| %>
-  <%= t.head('LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO') %>
-  <%= t.day do |day, tasks| %>
-    <% if workday = Workday.find_by_date_time(day.to_s) %>
-      <a href="/workdays/#{workday.id}"><%= day.day %></a>
-    <% else %>
-      <a href="/workdays/new?day=#{day.to_s}"><%= day.day %></a>
-    <% end %>
-  <% end %>
-<% end %>
-</div>
+      <%= calendar_for(@tasks, :first_day_of_week => 1, :year => @date.year, :month => @date.month) do |t| %>
+        <%= t.head('LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO') %>
+        <%= t.day do |day, tasks| %>
+          <% if workday = current_user.workdays.find_by_date_time(day.to_s) %>
+            <a href="/workdays/#{workday.id}"><%= day.day %></a>
+          <% else %>
+            <a href="/workdays/new?day=#{day.to_s}"><%= day.day %></a>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
 
-</content-body:>
+  </content-body:>
 
 </index-page>
