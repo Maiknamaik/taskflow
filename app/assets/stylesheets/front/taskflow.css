@@ -1,0 +1,167 @@
+/* CALENDARIO DEL WORKDAY */
+
+#calendar table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 2px 2px 5px #999;
+  border: 1px solid #999;
+}
+
+#calendar td,
+#calendar th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 12px;
+  border: 1px solid #999;
+}
+
+#calendar th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+}
+
+#calendar .weekend {
+  color: #CC0000;
+  width: 10%;
+}
+
+#calendar td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
+  width: 16%
+}
+
+#month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+#calendar {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+#calendar #month ~ a, #calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+#calendar a {
+  padding: 2px;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#calendar td:hover{
+  text-decoration: none;
+  padding: 0px;
+  color: #999;
+  background: #FFCC66;
+}
+
+#calendar td.weekend:hover {
+  color: #CC0000;
+  background: #E34242;
+}
+
+#calendar td.notmonth:hover {
+  color: #CCC;
+  background: #5242E3;
+}
+
+#calendar .today {
+  background-color: #D7F2FF;
+}
+
+/* FORMULARIO DE TASK EN WORKDAYS */
+
+#diario {
+  float:left;
+  clear: left;
+}
+
+table#diario{
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 2px 2px 5px #999;
+}
+
+#diario td,
+#diario th {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 12px;
+  border: 1px solid #999;
+}
+
+#diario th {
+  background: #DDD;
+  color: #666;
+  text-align: center;
+}
+
+#diario td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 12px;
+  width: 33%;
+  padding: 3px;
+}
+
+#diario th{
+  color: #000;
+  height: 10px;
+}
+
+
+/* WORKDAYS.SHOW */
+
+#encabezado_izquierda,
+#encabezado_derecha {
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 20px;
+  width: 50%;
+  height: 50px;
+  vertical-align: top;
+}
+
+#encabezado_izquierda,
+#encabezado_derecha {
+  background: #DDD;
+  color: #666;
+}
+
+#encabezado_izquierda {
+text-align: left;
+float:left;
+clear: left;
+}
+
+#encabezado_derecha {
+float:left;
+text-align: right;
+clear: right;
+}
+
+#encabezado_izquierda,
+#encabezado_derecha {
+  background: #FFF;
+  color: #777;
+}
+
+#nuevaform {
+  float:left;
+  clear: left;
+  font-family: "Lucida Grande",arial,helvetica,sans-serif;
+  font-size: 12px;
+}

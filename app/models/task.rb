@@ -4,9 +4,9 @@ class Task < ActiveRecord::Base
 
   fields do
     timestamps
-    description :string
-    utility :string
-    resources :string
+    description :text
+    utility :text
+    resources :text
   end
 
   # --- Relations --- #
@@ -16,19 +16,21 @@ class Task < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || acting_user.signed_up?
   end
 
   def update_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || (acting_user == self.workday.owner && only_changed?(:description, :utility, :resources))
+    true
   end
 
   def destroy_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || (acting_user == self.workday.owner)
   end
 
   def view_permitted?(field)
-    acting_user.administrator?
+    acting_user.administrator? || (acting_user == self.workday.owner)
+    true
   end
 
 end
