@@ -5,35 +5,45 @@
 
     <content-body:>
 
-<!-- Muestra la fecha seleccionada en el calendario -->
-      <field-list fields="date_time"/>
+
+        <div id="encabezado_izquierda">
+ <!-- cualquier vista de un modelo puede acceder a sus elementos o campos desde el objeto que lleva su mismo nombre. Muestra la fecha seleccionada en el calendario -->
+        <%= @workday.date_time %>
+        </div>
+        <div id="encabezado_derecha">
+                <a href="/workdays/">Volver al calendario</a>
+
+        </div>
 
 <!-- Tabla que se autocarga con las Tasks -->
-      <div class="diario">
-        <table with="&@tasks" fields="description, utility, resources">
-        <description-heading:>DESCRIPCIÓN</description-heading:>
-        <utility-heading:>UTILIDAD</utility-heading:>
-        <resources-heading:>RECURSOS</resources-heading:>
+        <table id="diario" with="&@tasks" fields="description, utility, resources">
+          <description-heading:>DESCRIPCIÓN DE LA TAREA</description-heading:>
+          <utility-heading:>UTILIDAD DE LA TAREA REALIZADA</utility-heading:>
+          <resources-heading:>RECURSOS Y HERRAMIENTAS UTILIZADAS</resources-heading:>
+          <controls:>
+            <p><a href="/tasks/#{this.id}/edit" class="btn">Editar</a></p>
+            <p><delete-button label="Borrar"/></p>
+          </controls:>
         </table>
-      </div>
 
 <!-- v SECCIÓN GENERADA PARA USUARIO CON PERMISOS DE GENERACIÓN DE TASKS V -->
-      <section if="&can_create?(@workday.tasks)">
-        <h3>
-          <ht key="task.collection.add_form_heading" count="1">
-            Nueva tarea
-          </ht>
-        </h3>
-
-<!-- Formulario de generación de Tasks -->
-        <div id="nuevaform">
+      <div id="nuevaform">
+        <section if="&can_create?(@workday.tasks)">
+          <h3>
+            <ht key="task.collection.add_form_heading" count="1">
+              Nueva tarea
+            </ht>
+          </h3>
+          <!-- Formulario de generación de Tasks -->
           Describe brevemente la tarea que has realizado:
           <form with="&@task || new_for_current_user(@workday.tasks)" owner="workday" without-cancel>
-            <field-list: skip="workday"/>
+            <field-list: skip="workday">
+            </field-list:>
             <submit: label="#{ht 'task.actions.add', :default=>['Añadir'] }"/>
           </form>
-        </div>          
-      </section>
+        </section>
+      </div>
+
 
     </content-body:>
 

@@ -1,7 +1,7 @@
 Taskflow::Application.routes.draw do
   match ENV['RAILS_RELATIVE_URL_ROOT'] => 'front#index' if ENV['RAILS_RELATIVE_URL_ROOT']
 
-  root :to => 'workdays#index'
+  root :to => 'front#index'
 
   match 'users/:id/reset_password_from_email/:key' => 'users#reset_password', :as => 'reset_password_from_email'
 
