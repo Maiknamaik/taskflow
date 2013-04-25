@@ -4,8 +4,10 @@ class Project < ActiveRecord::Base
 
   fields do
     timestamps
+    project_name :string
     pro_date_ini :date
     pro_date_end :date
+    lead_responsible :string
   end
 
   # --- Relations --- #

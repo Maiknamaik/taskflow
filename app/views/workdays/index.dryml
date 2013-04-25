@@ -1,8 +1,9 @@
 <index-page>
 
-<content-header: replace/>
-  <content-body:>
+  <content-header: replace/>
 
+  <content-body:>
+  
     <div id="month">
       <h2>
         <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
@@ -12,15 +13,32 @@
     </div>
 
     <div id="calendar">
-      <% @tasks=%>
-
       <%= calendar_for(@tasks, :first_day_of_week => 1, :year => @date.year, :month => @date.month) do |t| %>
         <%= t.head('LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO') %>
         <%= t.day do |day, tasks| %>
-          <% if workday = current_user.workdays.find_by_date_time(day.to_s) %>
-            <a href="/workdays/#{workday.id}"><%= day.day %></a>
+          <!-- Condición que controla si el día es fin de semana -->
+          <% if day.strftime('%w')=='6' || day.strftime('%w')=='0' %>
+              <%= day.day %>
+              <div> Fuera de Practicas </div>
           <% else %>
-            <a href="/workdays/new?day=#{day.to_s}"><%= day.day %></a>
+            <!-- Condición que controla si el workday 'existe' -->
+            <% if workday = current_user.workdays.find_by_date_time(day.to_s) %>
+              <a href="/workdays/#{workday.id}"><%= day.day %></a>
+              <!-- Condición que controla el número de tareas apuntadas del Workday -->
+              <!-- Para mas de una tarea anotada -->
+              <% if Task.count(:all,:conditions=>["workday_id=?",workday.id]) > 1 %>
+                <div>
+                  <%= Task.count(:all,:conditions=>["workday_id=?",workday.id]) %> tareas apuntadas.
+                </div>
+                <!-- Para una sola tarea anotada -->
+              <% elsif Task.count(:all,:conditions=>["workday_id=?",workday.id])==1 %>
+                <div>
+                  <%= Task.count(:all,:conditions=>["workday_id=?",workday.id]) %> tarea apuntada. 
+                </div>
+              <% end %>
+            <% else %>
+              <a href="/workdays/new?day=#{day.to_s}"><%= day.day %></a>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>

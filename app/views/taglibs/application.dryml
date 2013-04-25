@@ -6,5 +6,6 @@ you can place common code in this file. -->
 <!--    <nav-item href="#{base_url}/">Home</nav-item> -->
 <!--    <nav-item with="&Task"><ht key="task.nav_item" count="100"><model-name-human count="100"/></ht></nav-item> -->
     <nav-item with="&Workday"><ht key="workday.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
+    <nav-item with="&Project"><ht key="workday.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
 </def>
