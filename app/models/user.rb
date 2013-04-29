@@ -12,8 +12,7 @@ class User < ActiveRecord::Base
   # --- Relations --- #
 
   has_many :workdays, :class_name => "Workday", :foreign_key => "owner_id"
-  has_many :project, :through => :project_users
-  has_many :project_users
+  belongs_to :project
   
   # This gives admin rights and an :active state to the first sign-up.
   # Just remove it if you don't want that
