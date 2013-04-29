@@ -16,7 +16,7 @@
       <%= calendar_for(@tasks, :first_day_of_week => 1, :year => @date.year, :month => @date.month) do |t| %>
         <%= t.head('LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO') %>
         <%= t.day do |day, tasks| %>
-          <!-- Condición que controla si el día es fin de semana -->
+          <!-- Condición que controla si el día está fuera de proyecto -->
           <% if day.strftime('%w')=='6' || day.strftime('%w')=='0' %>
               <%= day.day %>
               <div> Fuera de Practicas </div>
