@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423073139) do
+ActiveRecord::Schema.define(:version => 20130426110627) do
 
   create_table "project_users", :force => true do |t|
     t.datetime "created_at"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20130423073139) do
     t.date     "pro_date_ini"
     t.date     "pro_date_end"
     t.string   "project_name"
+    t.string   "lead_responsible"
   end
 
   create_table "tasks", :force => true do |t|
@@ -54,8 +55,10 @@ ActiveRecord::Schema.define(:version => 20130423073139) do
     t.datetime "updated_at"
     t.string   "state",                                   :default => "active"
     t.datetime "key_timestamp"
+    t.integer  "project_id"
   end
 
+  add_index "users", ["project_id"], :name => "index_users_on_project_id"
   add_index "users", ["state"], :name => "index_users_on_state"
 
   create_table "workdays", :force => true do |t|
@@ -63,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20130423073139) do
     t.datetime "updated_at"
     t.date     "date_time"
     t.integer  "owner_id"
+    t.integer  "project_id"
   end
 
   add_index "workdays", ["owner_id"], :name => "index_workdays_on_owner_id"

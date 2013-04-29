@@ -13,8 +13,8 @@ class Project < ActiveRecord::Base
   # --- Relations --- #
 
   has_many :users, :through => :project_users
-  has_many :project_users
-  
+  has_many :users
+
   # --- Permissions --- #
 
   def create_permitted?
