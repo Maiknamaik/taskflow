@@ -1,4 +1,4 @@
-Taskflow::Application.routes.draw do
+Kuneum::Application.routes.draw do
   match ENV['RAILS_RELATIVE_URL_ROOT'] => 'front#index' if ENV['RAILS_RELATIVE_URL_ROOT']
 
   root :to => 'front#index'

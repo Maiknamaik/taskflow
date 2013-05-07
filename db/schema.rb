@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426110627) do
+ActiveRecord::Schema.define(:version => 20130502084722) do
 
   create_table "project_users", :force => true do |t|
     t.datetime "created_at"
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20130426110627) do
     t.datetime "updated_at"
     t.date     "date_time"
     t.integer  "owner_id"
-    t.integer  "project_id"
   end
 
   add_index "workdays", ["owner_id"], :name => "index_workdays_on_owner_id"

@@ -2,7 +2,7 @@
 # You can add your own routes in the config/routes.rb file
 # which will override the routes in this file.
 
-Taskflow::Application.routes.draw do
+Kuneum::Application.routes.draw do
 
 
   # Resource routes for controller tasks

@@ -13,11 +13,11 @@
     </div>
 
     <div id="calendar">
-      <%= calendar_for(@tasks, :first_day_of_week => 1, :year => @date.year, :month => @date.month) do |t| %>
+           <%= calendar_for(@tasks, :first_day_of_week => 1, :year => @date.year, :month => @date.month) do |t| %>
         <%= t.head('LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO') %>
         <%= t.day do |day, tasks| %>
-          <!-- Condición que controla si el día está fuera de proyecto -->
-          <% if day.strftime('%w')=='6' || day.strftime('%w')=='0' %>
+          <!-- Condición que controla si el día está en fin de semana, Sabado y Domingo respectivamente -->
+          <% if day.strftime('%w')=='6' || day.strftime('%w')=='0' || day < Workday.last.owner.project.pro_date_ini || day > Workday.last.owner.project.pro_date_end %>
               <%= day.day %>
               <div> Fuera de Practicas </div>
           <% else %>
