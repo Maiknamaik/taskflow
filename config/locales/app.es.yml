@@ -1,0 +1,17 @@
+es:
+  activerecord:
+    models:
+      workday: "Jornada"
+      project: "Proyecto"
+      task: "Tarea"
+    
+    attributes:
+      task:
+        description: "Descripción"
+        utility: "Utilidad"
+        resources: "Recursos"
+      project:
+        Project: "Proyecto"
+        pro_date_ini: "Fecha de inicio"
+        pro_date_end: "Fecha de finalizacion"
+        lead_responsible: "Responsable de proyecto"

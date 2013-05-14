@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502084722) do
+ActiveRecord::Schema.define(:version => 20130510092516) do
 
   create_table "project_users", :force => true do |t|
     t.datetime "created_at"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(:version => 20130502084722) do
     t.string   "state",                                   :default => "active"
     t.datetime "key_timestamp"
     t.integer  "project_id"
+    t.string   "surname"
+    t.string   "lastname"
+    t.string   "dni"
+    t.string   "phone"
+    t.string   "address"
+    t.boolean  "teacher",                                 :default => false
+    t.date     "birthday"
+    t.string   "centre"
+    t.string   "departament"
+    t.string   "grade"
   end
 
   add_index "users", ["project_id"], :name => "index_users_on_project_id"

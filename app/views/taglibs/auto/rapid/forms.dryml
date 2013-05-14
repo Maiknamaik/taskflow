@@ -40,7 +40,7 @@
 <def tag="form" for="User">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, email_address, administrator, state, project" param/>
+    <field-list fields="name, surname, lastname, dni, phone, email_address, address, teacher, birthday, centre, departament, grade, administrator, state, project" param/>
     <div param="actions">
       <submit label="#{ht 'user.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -51,7 +51,7 @@
 <def tag="signup-form" for="User">
   <form lifecycle="signup" merge param="default">
     <error-messages param/>
-    <field-list fields="name, email_address, password, password_confirmation" param/>
+    <field-list fields="name, surname, lastname, dni, email_address, teacher, password, password_confirmation" param/>
     <div param="actions">
       <submit label="#{ht 'user.actions.signup', :default=>['Signup']}" param/><or-cancel param="cancel"/>
     </div>
