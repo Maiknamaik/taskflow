@@ -17,6 +17,9 @@ module Kuneum
     config.hobo.dryml_only_templates = true
     # Hobo: the front subsite loads front.css & front.js
     config.assets.precompile += %w(front.css front.js)
+    config.i18n.default_locale = :es
+    I18n.default_locale = :es
+    config.hobo.show_translation_keys = false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -24,7 +27,7 @@ module Kuneum
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
-    # config.hobo.show_translation_keys = true
+    
     
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

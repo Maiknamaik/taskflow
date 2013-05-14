@@ -1,0 +1,12 @@
+<%
+def campos
+  if @user.teacher == false || @user.teacher.nil?
+    "surname, lastname, dni, phone, email_address, address, birthday, grade, project"
+  else
+    "surname, lastname, dni, phone, email_address, address, birthday, centre, departament"
+  end 
+end 
+%>
+<show-page>
+  <field-list: fields="&campos"/>
+</show-page>
