@@ -427,7 +427,7 @@
         </ht>
       </h2>
 
-      <record-flags fields="administrator" param/>
+      <record-flags fields="administrator, teacher" param/>
 
       <a action="edit" if="&can_edit?" param="edit-link">
         <ht key="user.actions.edit" name="#{name(:no_wrapper => true)}">
@@ -437,7 +437,7 @@
     </content-header:>
 
     <content-body: param>
-      <field-list fields="email_address, state, project" param/>
+      <field-list fields="surname, lastname, dni, phone, email_address, address, birthday, centre, departament, grade, state, project" param/>
     </content-body:>
 
   </page>
