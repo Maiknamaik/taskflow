@@ -52,3 +52,5 @@ gem "bluecloth"
 gem 'RedCloth', :require => 'redcloth'
 gem 'bootswatch-rails'
 gem "watu_table_builder", :require => "table_builder"
+gem 'paperclip'
+gem 'hobo_paperclip', :git => "git://github.com/Hobo/hobo_paperclip.git", :branch => "master"

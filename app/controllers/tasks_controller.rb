@@ -9,7 +9,12 @@ class TasksController < ApplicationController
 
   def create_for_workday
     hobo_create do
-      redirect_to "/workdays/#{params[:workday_id]}"
+      if request.xhr?
+        @tasks=@task.workday.tasks
+        hobo_ajax_response
+      else
+        redirect_to "/workdays/#{params[:workday_id]}"
+      end
     end
   end
 

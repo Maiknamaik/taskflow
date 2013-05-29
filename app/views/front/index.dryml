@@ -6,11 +6,8 @@
     <header class="content-header hero-unit">
       <h1>Bienvenido a <app-name/></h1>
       <section class="welcome-message">
-        <h3>Congratulations! Your Hobo Rails App is up and running</h3>
-        <ul>
-          <li>Para editar esta página: app/views/front/index.dryml</li>
-        </ul>
-
+        <h3>Por favor, registrate o inicia sesión para acceder a tu contenido</h3>
+        <h5>v13.5.28</h5>
       </section>
     </header>
 

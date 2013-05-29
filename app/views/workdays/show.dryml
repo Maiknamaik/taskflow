@@ -16,7 +16,7 @@
         </div>
 
 <!-- Tabla que se autocarga con las Tasks -->
-        <table id="diario" with="&@tasks" fields="description, utility, resources">
+        <table part='diario' id="diario" with="&@tasks" fields="description, utility, resources">
           <description-heading:>DESCRIPCIÓN DE LA TAREA</description-heading:>
           <utility-heading:>UTILIDAD DE LA TAREA REALIZADA</utility-heading:>
           <resources-heading:>RECURSOS Y HERRAMIENTAS UTILIZADAS</resources-heading:>
@@ -26,22 +26,43 @@
           </controls:>
         </table>
 
-<!-- v SECCIÓN GENERADA PARA USUARIO CON PERMISOS DE GENERACIÓN DE TASKS V -->
+<!-- SECCIÓN GENERADA PARA USUARIO CON PERMISOS DE GENERACIÓN DE TASKS -->
       <div id="nuevaform">
-        <section if="&can_create?(@workday.tasks)">
-          <h3>
-            <ht key="task.collection.add_form_heading" count="1">
-              Nueva tarea
-            </ht>
-          </h3>
-          <!-- Formulario de generación de Tasks -->
-          Describe brevemente la tarea que has realizado:
-          <form with="&@task || new_for_current_user(@workday.tasks)" owner="workday" without-cancel>
-            <field-list: skip="workday">
-            </field-list:>
-            <submit: label="#{ht 'task.actions.add', :default=>['Añadir'] }"/>
-          </form>
-        </section>
+        <!-- Botón Modal-->
+            <a href="#nuevalta" role="button" class="btn" data-toggle="modal">Nueva Tarea</a>
+        <!--Formulario modal-->
+            <div id="nuevalta" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Añadir una Nueva Tarea</h3>
+              </div>
+              <form updates='#diario' with="&@task || new_for_current_user(@workday.tasks)" owner="workday" without-cancel>
+                <div class="modal-body">
+                  <p>
+                    Describe brevemente la tarea que has realizado:
+                    <field-list skip='workday'/>
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                  <button class="btn" btn-primary>Guardar Cambios</button>
+                </div>
+              </form>
+            </div>
+<!--        <section if="&can_create?(@workday.tasks)">-->
+<!--          <h3>-->
+<!--            <ht key="task.collection.add_form_heading" count="1">-->
+<!--              Nueva tarea-->
+<!--            </ht>-->
+<!--          </h3>-->
+<!--          Formulario de generación de Tasks-->
+<!--          Describe brevemente la tarea que has realizado:-->
+<!--          <form with="&@task || new_for_current_user(@workday.tasks)" owner="workday" without-cancel>-->
+<!--            <field-list: skip="workday">-->
+<!--            </field-list:>-->
+<!--            <submit: label="#{ht 'task.actions.add', :default=>['Añadir'] }"/>-->
+<!--          </form>-->
+<!--        </section>-->
       </div>
 
 
